@@ -42,7 +42,7 @@ Sigue estos pasos para levantar el proyecto en tu entorno local:
 
 ### 1. Clonar el repositorio
 
-git clone [https://github.com/TU_USUARIO/PeriodicoDigital.git](https://github.com/TU_USUARIO/PeriodicoDigital.git)
+git clone [https://github.com/juanesj2/PeriodicoDigital.git](https://github.com/juanesj2/PeriodicoDigital.git)
 
 ### 2. Instala las dependencias
 cd PeriodicoDigital
