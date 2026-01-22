@@ -1,8 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
-/** Ionic CSS Variables **/
-:root {
+@mixin light-mode-variables {
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -74,6 +73,26 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /* Explicit White background for forced Light Mode */
+  --ion-background-color: #f4f5f8;
+  --ion-background-color-rgb: 244, 245, 248;
+  
+  --ion-text-color: #000000;
+  --ion-text-color-rgb: 0, 0, 0;
+
+  --ion-toolbar-background: #ffffff;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  
+  /* Custom App Variables - Light */
+  --custom-tab-bar-bg: #ffffff;
+  --custom-border-color: rgba(0,0,0,0.05);
+}
+
+/** Ionic CSS Variables **/
+:root {
+  @include light-mode-variables;
 }
 
 /*
@@ -120,6 +139,10 @@
   --ion-item-background: #0b0f19;
 
   --ion-card-background: #1c1c1c;
+
+  /* Custom App Variables - Dark */
+  --custom-tab-bar-bg: #0b0f19;
+  --custom-border-color: rgba(255,255,255,0.05);
 }
 
 /*
@@ -140,4 +163,12 @@
  */
 body.dark {
   @include dark-mode-variables;
+}
+
+/*
+ * Explicit Light Mode
+ * Ensures light variables apply even if system is Dark
+ */
+body.light {
+  @include light-mode-variables;
 }

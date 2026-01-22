@@ -35,5 +35,6 @@ export class TabsPage {
 
   private updateTheme() {
     document.body.classList.toggle('dark', this.isDarkMode);
+    document.body.classList.toggle('light', !this.isDarkMode);
   }
 }
