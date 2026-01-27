@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent,   IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonThumbnail, } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonTabButton, IonLabel } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NewsCardComponent, NewsItem } from '../components/news-card/news-card.component';
 import { CommonModule } from '@angular/common';
@@ -18,16 +10,12 @@ import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutli
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent,
-      IonCard,
-      IonCardContent,
-      IonCardHeader,
-      IonCardSubtitle,
-      IonCardTitle,
-      IonItem,
-      IonLabel,
-      IonList,
-      IonThumbnail,],
+  standalone: true,
+  imports: [
+    CommonModule,
+    IonContent,
+    NewsCardComponent
+  ],
 })
 export class Tab1Page {
   newsItems: NewsItem[] = [
