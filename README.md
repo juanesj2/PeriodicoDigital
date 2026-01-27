@@ -52,6 +52,10 @@ npm install
 ionic serve
 
 ### 4. Generar version nativa de Android
+npx cap init aplication io.ionic.starter --web-dir www
 ionic build
-ionic cap add android
-ionic cap open android
+npm install @capacitor/android
+npx cap add android
+npx cap sync
+
+npx cap open android
