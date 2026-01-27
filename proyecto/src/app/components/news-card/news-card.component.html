@@ -1,0 +1,10 @@
+<ion-item button="true" lines="none" detail="false" class="news-item">
+  <div class="card-image" slot="start">
+    <img [src]="news.image" [alt]="news.title" />
+  </div>
+
+  <div class="card-content">
+    <h2 class="card-title">{{ news.title }}</h2>
+    <p class="card-desc">{{ news.description }}</p>
+  </div>
+</ion-item>

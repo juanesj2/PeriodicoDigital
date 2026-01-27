@@ -1,18 +1,40 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonHeader, IonToolbar, IonButtons, IonButton, IonTitle } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { triangle, ellipse, square } from 'ionicons/icons';
+import { homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline } from 'ionicons/icons';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
+  standalone: true,
+  imports: [CommonModule, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonHeader, IonToolbar, IonButtons, IonButton, IonTitle],
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
+  isDarkMode = false;
 
   constructor() {
-    addIcons({ triangle, ellipse, square });
+    addIcons({ homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline });
+    
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.isDarkMode = prefersDark.matches;
+    this.updateTheme(); 
+
+    prefersDark.addEventListener('change', (mediaQuery) => {
+      this.isDarkMode = mediaQuery.matches;
+      this.updateTheme();
+    });
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    this.updateTheme();
+  }
+
+  private updateTheme() {
+    document.body.classList.toggle('dark', this.isDarkMode);
+    document.body.classList.toggle('light', !this.isDarkMode);
   }
 }

@@ -1,1 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
+ion-header {
+  flex-shrink: 0;
+  position: relative; 
+  z-index: 10;
+}
+
+ion-tabs {
+  flex-grow: 1;
+  position: relative;
+}
+
+ion-tab-bar {
+  --background: var(--custom-tab-bar-bg);
+  border-top: 1px solid var(--custom-border-color);
+}
