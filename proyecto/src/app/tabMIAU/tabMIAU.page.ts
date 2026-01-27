@@ -7,9 +7,9 @@ import { addIcons } from 'ionicons';
 import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutline } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'app-tab-miau',
+  templateUrl: 'tabMIAU.page.html',
+  styleUrls: ['tabMIAU.page.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -17,7 +17,7 @@ import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutli
     NewsCardComponent
   ],
 })
-export class Tab1Page {
+export class TabMIAUPage {
   newsItems: NewsItem[] = [
     {
       id: 1,

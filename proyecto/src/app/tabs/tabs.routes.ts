@@ -29,7 +29,7 @@ export const routes: Routes = [
       {
         path: 'tabMIAU',
         loadComponent: () =>
-          import('../tabtabMIAU/tabtabMIAU.page').then((m) => m.TabtabMIAUPage),
+          import('../tabMIAU/tabMIAU.page').then((m) => m.TabMIAUPage),
       },
       {
         path: '',
