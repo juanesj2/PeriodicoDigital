@@ -52,10 +52,20 @@ npm install
 ionic serve
 
 ### 4. Generar version nativa de Android
+# 1. Inicializar Capacitor (configura el ID de la app y directorio web)
 npx cap init aplication io.ionic.starter --web-dir www
+
+# 2. Construir la aplicación web (genera la carpeta www)
 ionic build
+
+# 3. Instalar la dependencia de Android para Capacitor
 npm install @capacitor/android
+
+# 4. Añadir la plataforma Android al proyecto
 npx cap add android
+
+# 5. Sincronizar el código web con la carpeta nativa
 npx cap sync
 
+# 6. Abrir android studio
 npx cap open android
