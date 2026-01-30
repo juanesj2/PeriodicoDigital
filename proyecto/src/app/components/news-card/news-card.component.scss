@@ -4,7 +4,7 @@
   --padding-end: 16px;
   --inner-padding-end: 0; /* Remove default inner padding end */
   --min-height: auto;
-  
+
   /* Separator */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -16,10 +16,10 @@
 }
 
 .card-image img {
-  width: 100px; 
+  width: 100px;
   height: 70px;
   object-fit: cover;
-  border-radius: 10px; 
+  border-radius: 10px;
   display: block;
 }
 
@@ -38,7 +38,7 @@
   font-weight: 600;
   line-height: 1.3;
   /* Ensure text wraps correctly */
-  white-space: normal; 
+  white-space: normal;
 }
 
 .card-desc {
@@ -46,10 +46,20 @@
   color: var(--ion-color-medium, #989aa2);
   font-size: 13px;
   line-height: 1.4;
-  
+
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   white-space: normal;
+}
+
+/* Estilos para la fuente de la noticia */
+.card-source {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--ion-color-tertiary, #5260ff); /* Color destacado pero sutil */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }

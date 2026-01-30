@@ -1,0 +1,85 @@
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { RespuestaNoticias } from '../interfaces/noticias';
+
+// Datos de prueba
+const DATOS_PRUEBA: RespuestaNoticias = {
+    "totalArticles": 78230,
+    "articles": [
+        {
+            "id": "88227426cd80c10ca139b1e2e24b52fe",
+            "title": "Google TV Quietly Got Better: New Shortcuts, Fixes, and Smarter Profiles",
+            "description": "Google TV is getting a fresh update that adds new settings menu, homescreen improvements and a report history section.",
+            "content": "Google is rolling out a fresh update to its TV platform that brings new settings and a few homescreen improvements. The update doesn’t add any major visual changes or features, but it brings useful tweaks that improve how the interface looks and work... [1522 chars]",
+            "url": "https://www.androidheadlines.com/2026/01/google-tv-quietly-got-better-new-shortcuts-fixes-and-smarter-profiles.html",
+            "image": "https://www.androidheadlines.com/wp-content/uploads/2023/09/AH-Google-TV-logo-2023-image-1-jpg.webp",
+            "publishedAt": "2026-01-27T12:28:34Z",
+            "lang": "en",
+            "source": {
+                "id": "0cecf842c67e3d7cc093daca6d9bdf9c",
+                "name": "Android Headlines",
+                "url": "https://www.androidheadlines.com",
+                "country": "us"
+            }
+        },
+        {
+            "id": "ee0bf4eb8da298bda151f4a8505b0bed",
+            "title": "Apple and Google Settle Class Actions After Allegations of Unwanted Voice Recording",
+            "description": "Apple and Google will pay $163M to settle lawsuits over devices secretly recording users' conversations.",
+            "content": "Apple and Google are set to pay a combined $163 million to settle class-action lawsuits after allegations that their devices secretly recorded millions of users' conversations.\nThe settlements follow complaints that Siri and Google Assistant were act... [2243 chars]",
+            "url": "https://www.ibtimes.com/apple-google-settle-class-actions-after-allegations-unwanted-voice-recording-3796303",
+            "image": "https://d.ibtimes.com/en/full/4641778/apple-meta-hit-nearly-800-million-eu.jpg",
+            "publishedAt": "2026-01-27T12:24:09Z",
+            "lang": "en",
+            "source": {
+                "id": "933344203c2b862af768b5e662a162a4",
+                "name": "International Business Times",
+                "url": "https://www.ibtimes.com",
+                "country": "us"
+            }
+        },
+        {
+            "id": "942f097e26c5fdb241e928e92fce48a3",
+            "title": "EU steps in to make sure Google gives rivals access to AI services and data",
+            "description": "The European Union is stepping in to ensure Google gives rival AI companies and search engines access to data and Gemini AI services",
+            "content": "BRUSSELS (AP) — The European Union said Tuesday it's stepping in to make sure Google gives rival AI companies and search engines access to Gemini AI services and data as required by the bloc's flagship digital rulebook.\nThe executive arm of the 27-na... [1494 chars]",
+            "url": "https://www.barchart.com/story/news/37245151/eu-steps-in-to-make-sure-google-gives-rivals-access-to-ai-services-and-data",
+            "image": "https://barchart-news-media-prod.aws.barchart.com/ap/2663e1fefb6e485aa131a3d5a6089d5d/2663e1fefb6e485aa131a3d5a6089d5d_main_apple_google_artificial_intelligence_82007.jpg",
+            "publishedAt": "2026-01-27T12:02:49Z",
+            "lang": "en",
+            "source": {
+                "id": "f81e0cedbddbe08e3058634e8bb4a56f",
+                "name": "Barchart",
+                "url": "https://www.barchart.com",
+                "country": "us"
+            }
+        }
+    ]
+};
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NoticiasService {
+
+  constructor() { }
+
+  /**
+   * Obtiene los titulares principales.
+   * Actualmente devuelve datos estáticos para simular la API de GNews.
+   * @returns Observable con la respuesta de noticias simulada.
+   */
+  getTitulares(): Observable<RespuestaNoticias> {
+    // Usamos 'of' de RxJS para devolver los datos como un Observable
+    return of(DATOS_PRUEBA);
+  }
+
+  getTitularesPorCategoria(categoria: string): Observable<RespuestaNoticias> {
+    console.log(`Solicitando noticias de la categoría: ${categoria}`);
+    // Aquí haríamos la petición HTTP con el parámetro de categoría:
+    // return this.http.get<RespuestaNoticias>(`${apiUrl}/top-headlines?category=${categoria}&apikey=${apiKey}`);
+    
+    // Por ahora, devolvemos los mismos datos de prueba
+    return of(DATOS_PRUEBA);
+  }
+}

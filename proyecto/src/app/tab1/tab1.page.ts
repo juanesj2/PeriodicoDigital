@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent,   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -13,6 +13,8 @@ import { NewsCardComponent, NewsItem } from '../components/news-card/news-card.c
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutline } from 'ionicons/icons';
+import { NoticiasService } from '../services/noticias.service';
+import { Articulo } from '../interfaces/noticias';
 
 @Component({
   selector: 'app-tab1',
@@ -27,35 +29,41 @@ import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutli
       IonItem,
       IonLabel,
       IonList,
-      IonThumbnail,],
+      IonThumbnail,
+      NewsCardComponent, CommonModule], // Importamos NewsCardComponent y CommonModule
 })
-export class Tab1Page {
-  newsItems: NewsItem[] = [
-    {
-      id: 1,
-      title: 'New AI Chip Revealed',
-      description: 'New AI Chip tweets the world views oneaqiptmats. His entering automation of target stage and Investment twilts...',
-      image: 'https://cataas.com/cat?width=200&height=200&_r=1'
-    },
-    {
-      id: 2,
-      title: 'New AI Chip Comes to Position on Gits and atrita...',
-      description: 'The Soomiciort and navmation backets marketing is hap imvantend unevand fea...',
-      image: 'https://cataas.com/cat?width=200&height=200&_r=2'
-    },
-    {
-      id: 3,
-      title: 'Fumbottorra-O',
-      description: "Branda's news reference: bunda inwareamerts and overonotts contents...",
-      image: 'https://cataas.com/cat?width=200&height=200&_r=3'
-    },
-    {
-      id: 4,
-      title: 'Fandevvır states',
-      description: "Branda's news reference: bunda inwareamerts and overonotts contents...",
-      image: 'https://cataas.com/cat?width=200&height=200&_r=4'
-    }
-  ];
+export class Tab1Page implements OnInit {
+  // Array para almacenar las noticias que se mostrarán en la vista
+  newsItems: NewsItem[] = [];
 
-  constructor() {}
+  constructor(private noticiasService: NoticiasService) {}
+
+  ngOnInit() {
+    // Cargamos los titulares al iniciar la página
+    this.cargarNoticias();
+  }
+
+  /**
+   * Llama al servicio de noticias para obtener los titulares
+   * y mapea los datos al formato que necesita el componente de tarjeta.
+   */
+  cargarNoticias() {
+    // Llamamos al método filtrando por la categoría 'technology' (Tecnología)
+    this.noticiasService.getTitularesPorCategoria('technology').subscribe({
+      next: (resp) => {
+        // Mapeamos los artículos de la respuesta a la estructura de NewsItem
+        this.newsItems = resp.articles.map(articulo => ({
+          id: articulo.id,
+          title: articulo.title,
+          description: articulo.description,
+          image: articulo.image,
+          source: articulo.source.name,
+          url: articulo.url
+        }));
+      },
+      error: (err) => {
+        console.error('Error al cargar noticias', err);
+      }
+    });
+  }
 }
