@@ -14,28 +14,41 @@ import { RouterLink } from '@angular/router';
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
-  isDarkMode = false;
+  
+  // Variable para controlar el estado del modo oscuro (Dark Mode)
+  esModoOscuro = false;
 
   constructor() {
+    // Registramos los iconos que utilizaremos en la interfaz
     addIcons({ homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline });
     
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    this.isDarkMode = prefersDark.matches;
-    this.updateTheme(); 
+    // Detectamos la preferencia de color del sistema (claro u oscuro)
+    const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)');
+    this.esModoOscuro = prefiereOscuro.matches;
+    this.actualizarTema(); 
 
-    prefersDark.addEventListener('change', (mediaQuery) => {
-      this.isDarkMode = mediaQuery.matches;
-      this.updateTheme();
+    // Escuchamos cambios en la preferencia del sistema mientras la app está abierta
+    prefiereOscuro.addEventListener('change', (mediaQuery) => {
+      this.esModoOscuro = mediaQuery.matches;
+      this.actualizarTema();
     });
   }
 
-  toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    this.updateTheme();
+  /**
+   * Alterna entre el tema claro y oscuro.
+   * Se llama cuando el usuario pulsa el botón de cambio de tema.
+   */
+  alternarTema() {
+    this.esModoOscuro = !this.esModoOscuro;
+    this.actualizarTema();
   }
 
-  private updateTheme() {
-    document.body.classList.toggle('dark', this.isDarkMode);
-    document.body.classList.toggle('light', !this.isDarkMode);
+  /**
+   * Aplica la clase CSS correspondiente al body del documento
+   * para cambiar visualmente el tema de la aplicación.
+   */
+  private actualizarTema() {
+    document.body.classList.toggle('dark', this.esModoOscuro);
+    document.body.classList.toggle('light', !this.esModoOscuro);
   }
 }

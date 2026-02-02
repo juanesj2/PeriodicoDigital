@@ -2,15 +2,15 @@
   Componente de tarjeta de noticia.
   Muestra la imagen, título, descripción y la fuente de la noticia.
 -->
-<ion-item button="true" [href]="news.url" target="_blank" lines="none" detail="false" class="news-item">
+<ion-item button="true" [href]="noticia.url" target="_blank" lines="none" detail="false" class="news-item">
   <div class="card-image" slot="start">
-    <img [src]="news.image" [alt]="news.title" />
+    <img [src]="noticia.image" [alt]="noticia.title" />
   </div>
 
   <div class="card-content">
-    <h2 class="card-title">{{ news.title }}</h2>
-    <p class="card-desc">{{ news.description }}</p>
+    <h2 class="card-title">{{ noticia.title }}</h2>
+    <p class="card-desc">{{ noticia.description }}</p>
     <!-- Mostramos la fuente si está disponible -->
-    <p *ngIf="news.source" class="card-source">{{ news.source }}</p>
+    <p *ngIf="noticia.source" class="card-source">{{ noticia.source }}</p>
   </div>
 </ion-item>

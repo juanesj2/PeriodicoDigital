@@ -9,7 +9,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent,   IonCard,
   IonList,
   IonThumbnail, } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { NewsCardComponent, NewsItem } from '../components/news-card/news-card.component';
+import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutline } from 'ionicons/icons';
@@ -34,7 +34,7 @@ import { Articulo } from '../interfaces/noticias';
 })
 export class Tab1Page implements OnInit {
   // Array para almacenar las noticias que se mostrarán en la vista
-  newsItems: NewsItem[] = [];
+  itemsNoticia: ItemNoticia[] = [];
 
   constructor(private noticiasService: NoticiasService) {}
 
@@ -52,7 +52,7 @@ export class Tab1Page implements OnInit {
     this.noticiasService.getTitularesPorCategoria('technology').subscribe({
       next: (resp) => {
         // Mapeamos los artículos de la respuesta a la estructura de NewsItem
-        this.newsItems = resp.articles.map(articulo => ({
+        this.itemsNoticia = resp.articles.map(articulo => ({
           id: articulo.id,
           title: articulo.title,
           description: articulo.description,

@@ -81,7 +81,7 @@ const DATOS_PRUEBA: RespuestaNoticias = {
 export class NoticiasService {
 
   // API Key de GNews 
-  private apiKey = 'YOUR_API_KEY_HERE'; 
+  private apiKey = 'bb53ea121e4e43caa8502d31d52ac87f'; 
   private apiUrl = 'https://gnews.io/api/v4';
 
   // Categorías disponibles
@@ -97,18 +97,31 @@ export class NoticiasService {
 
   constructor(private http: HttpClient) { }
 
+  // ==============================================================
+  // Métodos Principales del Servicio
+  // ==============================================================
+
+  /**
+   * Obtiene los titulares principales (general).
+   * Llama internamente a getTitularesPorCategoria con 'general'.
+   */
   getTitulares(): Observable<RespuestaNoticias> {
     return this.getTitularesPorCategoria('general');
   }
 
+  // ==============================================================
 
+  /**
+   * Obtiene titulares por categoría.
+   * Categorías disponibles: technology, sports, business, entertainment, etc.
+   * @param categoria Categoría a buscar.
+   */
   getTitularesPorCategoria(categoria: string): Observable<RespuestaNoticias> {
     console.log(`Solicitando noticias de la categoría: ${categoria}`);
     
     // Si no hay API Key configurada, devolver datos de prueba (opcional)
     if (this.apiKey === 'YOUR_API_KEY_HERE') {
         console.warn('API Key no configurada. Usando datos de prueba.');
-        // Descomentar la siguiente línea si se quiere usar fallback automático
         return of(DATOS_PRUEBA);
     }
 
