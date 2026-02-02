@@ -80,8 +80,8 @@ const DATOS_PRUEBA: RespuestaNoticias = {
 })
 export class NoticiasService {
 
-  // API Key de GNews 
-  private apiKey = 'bb53ea121e4e43caa8502d31d52ac87f'; 
+  // API Key de GNews (Obtenida desde el archivo de entorno)
+  private apiKey = environment.apiKey; 
   private apiUrl = 'https://gnews.io/api/v4';
 
   // Categorías disponibles

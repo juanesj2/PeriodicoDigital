@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent,   IonCard,
+import { IonHeader, 
+  IonToolbar, 
+  IonTitle,
+  IonContent,   
+  IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
