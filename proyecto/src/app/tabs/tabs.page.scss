@@ -19,3 +19,18 @@ ion-tab-bar {
   --background: var(--custom-tab-bar-bg);
   border-top: 1px solid var(--custom-border-color);
 }
+
+.cat{
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: white;
+}
+
+ion-toolbar {
+  color: var(--ion-color-primary);
+}
+
+body.dark ion-toolbar .cat svg{
+  fill: black;
+}
