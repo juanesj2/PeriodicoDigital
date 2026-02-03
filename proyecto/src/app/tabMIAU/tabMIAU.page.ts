@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonTabButton, IonLabel } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { NewsCardComponent, NewsItem } from '../components/news-card/news-card.component';
+import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutline } from 'ionicons/icons';
+import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab-miau',
@@ -18,29 +18,30 @@ import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutli
   ],
 })
 export class TabMIAUPage {
-  newsItems: NewsItem[] = [
+  // Lista de noticias de gatos para mostrar en la vista
+  itemsNoticia: ItemNoticia[] = [
     {
       id: 1,
-      title: 'New AI Chip Revealed',
-      description: 'New AI Chip tweets the world views oneaqiptmats. His entering automation of target stage and Investment twilts...',
+      title: 'Nuevo Chip de IA Revelado',
+      description: 'Un nuevo chip de IA sorprende al mundo con sus capacidades de automatización y visión...',
       image: 'https://cataas.com/cat?width=200&height=200&_r=1'
     },
     {
       id: 2,
-      title: 'New AI Chip Comes to Position on Gits and atrita...',
-      description: 'The Soomiciort and navmation backets marketing is hap imvantend unevand fea...',
+      title: 'La IA llega a los gatos',
+      description: 'El mercado de juguetes inteligentes para gatos está en auge con nuevas innovaciones...',
       image: 'https://cataas.com/cat?width=200&height=200&_r=2'
     },
     {
       id: 3,
-      title: 'Fumbottorra-O',
-      description: "Branda's news reference: bunda inwareamerts and overonotts contents...",
+      title: 'Noticia Gatuna 3',
+      description: 'Más noticias sobre el mundo felino y sus avances tecnológicos...',
       image: 'https://cataas.com/cat?width=200&height=200&_r=3'
     },
     {
       id: 4,
-      title: 'Fandevvır states',
-      description: "Branda's news reference: bunda inwareamerts and overonotts contents...",
+      title: 'Gatos y Tecnología',
+      description: 'Cómo la tecnología está mejorando la vida de nuestras mascotas...',
       image: 'https://cataas.com/cat?width=200&height=200&_r=4'
     }
   ];
