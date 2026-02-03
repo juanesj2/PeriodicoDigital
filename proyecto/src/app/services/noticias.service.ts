@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { RespuestaNoticias } from '../interfaces/noticias';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 // Datos de prueba para fallback
 const DATOS_PRUEBA: RespuestaNoticias = {
@@ -114,7 +114,6 @@ export class NoticiasService {
   /**
    * Obtiene titulares por categoría.
    * Categorías disponibles: technology, sports, business, entertainment, etc.
-   * @param categoria Categoría a buscar.
    */
   getTitularesPorCategoria(categoria: string): Observable<RespuestaNoticias> {
     console.log(`Solicitando noticias de la categoría: ${categoria}`);
