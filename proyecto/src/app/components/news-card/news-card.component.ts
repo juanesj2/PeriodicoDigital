@@ -2,12 +2,15 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonItem } from '@ionic/angular/standalone';
 
-export interface NewsItem {
-  id: number;
+// Definimos la estructura de un ítem de noticia para la tarjeta
+// Definimos la estructura de un ítem de noticia para la tarjeta
+export interface ItemNoticia {
+  id: string | number; // El ID puede ser número o string (hash)
   title: string;
   description: string;
   image: string;
-  source?: string;
+  source?: string; // Nombre de la fuente (opcional)
+  url?: string; // URL para abrir la noticia completa (opcional)
 }
 
 @Component({
@@ -18,5 +21,6 @@ export interface NewsItem {
   imports: [CommonModule, IonItem]
 })
 export class NewsCardComponent {
-  @Input() news!: NewsItem;
+  // Noticia a mostrar en la tarjeta
+  @Input() noticia!: ItemNoticia;
 }

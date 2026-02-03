@@ -2,8 +2,8 @@
   <ion-toolbar>
     
     <ion-buttons slot="start">
-      <ion-button>
-        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      <ion-button routerLink="/tabs/tabMIAU">
+        <ion-icon slot="icon-only" name="cat"></ion-icon>
       </ion-button>
     </ion-buttons>
 
@@ -15,8 +15,8 @@
     </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="toggleTheme()">
-        <ion-icon slot="icon-only" [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+      <ion-button (click)="alternarTema()">
+        <ion-icon slot="icon-only" [name]="esModoOscuro ? 'sunny-outline' : 'moon-outline'"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
