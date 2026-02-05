@@ -24,24 +24,28 @@ export class TabMIAUPage {
       id: 1,
       title: 'Nuevo Chip de IA Revelado',
       description: 'Un nuevo chip de IA sorprende al mundo con sus capacidades de automatización y visión...',
+      content: 'Niño ponme otra que esta tiene agujero',
       image: 'https://cataas.com/cat?width=200&height=200&_r=1'
     },
     {
       id: 2,
       title: 'La IA llega a los gatos',
       description: 'El mercado de juguetes inteligentes para gatos está en auge con nuevas innovaciones...',
+      content: 'Perdona tienes marlboro?',
       image: 'https://cataas.com/cat?width=200&height=200&_r=2'
     },
     {
       id: 3,
       title: 'Noticia Gatuna 3',
       description: 'Más noticias sobre el mundo felino y sus avances tecnológicos...',
+      content: 'Con los dedos de las manos, los dedos de los pies...',
       image: 'https://cataas.com/cat?width=200&height=200&_r=3'
     },
     {
       id: 4,
       title: 'Gatos y Tecnología',
       description: 'Cómo la tecnología está mejorando la vida de nuestras mascotas...',
+      content: 'Detenido Juan Steven en un club de carretera de Torrelodones ',
       image: 'https://cataas.com/cat?width=200&height=200&_r=4'
     }
   ];

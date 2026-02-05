@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonItem } from '@ionic/angular/standalone';
+import { IonItem, ModalController } from '@ionic/angular/standalone';
+import { NewsModalComponent } from '../news-modal/news-modal.component';
 
-// Definimos la estructura de un ítem de noticia para la tarjeta
-// Definimos la estructura de un ítem de noticia para la tarjeta
 export interface ItemNoticia {
-  id: string | number; // El ID puede ser número o string (hash)
+  id: string | number;
   title: string;
   description: string;
+  content: string;
   image: string;
-  source?: string; // Nombre de la fuente (opcional)
-  url?: string; // URL para abrir la noticia completa (opcional)
+  source?: string;
+  url?: string;
 }
 
 @Component({
@@ -18,9 +18,21 @@ export interface ItemNoticia {
   templateUrl: './news-card.component.html',
   styleUrls: ['./news-card.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonItem]
+  imports: [CommonModule, IonItem],
 })
 export class NewsCardComponent {
-  // Noticia a mostrar en la tarjeta
   @Input() noticia!: ItemNoticia;
+
+  constructor(private modalCtrl: ModalController) {}
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: NewsModalComponent,
+      componentProps: {
+        noticia: this.noticia,
+      },
+    });
+
+    await modal.present();
+  }
 }

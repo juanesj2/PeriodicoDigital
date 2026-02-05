@@ -10,6 +10,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent,   IonCard,
   IonThumbnail, } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
+import { NewsModalComponent } from '../components/news-modal/news-modal.component';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutline } from 'ionicons/icons';
@@ -30,7 +31,8 @@ import { Articulo } from '../interfaces/noticias';
       IonLabel,
       IonList,
       IonThumbnail,
-      NewsCardComponent, CommonModule], // Importamos NewsCardComponent y CommonModule
+      NewsCardComponent,
+      NewsModalComponent, CommonModule], // Importamos NewsCardComponent y CommonModule
 })
 export class Tab1Page implements OnInit {
   // Array para almacenar las noticias que se mostrarán en la vista
@@ -56,9 +58,10 @@ export class Tab1Page implements OnInit {
           id: articulo.id,
           title: articulo.title,
           description: articulo.description,
+          content: articulo.content,
           image: articulo.image,
           source: articulo.source.name,
-          url: articulo.url
+          url: articulo.url,
         }));
       },
       error: (err) => {
