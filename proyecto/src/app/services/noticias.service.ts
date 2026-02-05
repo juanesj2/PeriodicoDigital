@@ -114,7 +114,6 @@ export class NoticiasService {
   /**
    * Obtiene titulares por categoría.
    * Categorías disponibles: technology, sports, business, entertainment, etc.
-   * @param categoria Categoría a buscar.
    */
   getTitularesPorCategoria(categoria: string): Observable<RespuestaNoticias> {
     console.log(`Solicitando noticias de la categoría: ${categoria}`);
