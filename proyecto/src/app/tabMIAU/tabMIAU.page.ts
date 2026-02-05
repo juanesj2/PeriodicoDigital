@@ -22,27 +22,39 @@ export class TabMIAUPage {
   itemsNoticia: ItemNoticia[] = [
     {
       id: 1,
-      title: 'Nuevo Chip de IA Revelado',
-      description: 'Un nuevo chip de IA sorprende al mundo con sus capacidades de automatización y visión...',
+      title: 'MIAU MIAU: La caja perfecta existe',
+      description: 'Miau miau he encontrado, miau, la caja de cartón definitiva. Prrr prrr es muy cómoda miau.',
       image: 'https://cataas.com/cat?width=200&height=200&_r=1'
     },
     {
       id: 2,
-      title: 'La IA llega a los gatos',
-      description: 'El mercado de juguetes inteligentes para gatos está en auge con nuevas innovaciones...',
+      title: 'El punto rojo: ¿Amigo o Enemigo? MIAU',
+      description: 'Miau miau el punto rojo corre mucho miau. No puedo atraparlo miau miau. Karen se ríe miau.',
       image: 'https://cataas.com/cat?width=200&height=200&_r=2'
     },
     {
       id: 3,
-      title: 'Noticia Gatuna 3',
-      description: 'Más noticias sobre el mundo felino y sus avances tecnológicos...',
+      title: 'MIAU: Exigimos más atún ahora',
+      description: 'Miau miau miau la lata está vacía. Miau Karen, dame atún o te muerdo miau.',
       image: 'https://cataas.com/cat?width=200&height=200&_r=3'
     },
     {
       id: 4,
-      title: 'Gatos y Tecnología',
-      description: 'Cómo la tecnología está mejorando la vida de nuestras mascotas...',
+      title: 'Prrr Prrr: Siesta de 18 horas',
+      description: 'Miau zzz miau. Dormir al sol es lo mejor miau. No molestar miau.',
       image: 'https://cataas.com/cat?width=200&height=200&_r=4'
+    },
+    {
+      id: 5,
+      title: 'MIAU: He tirado el vaso de agua',
+      description: 'Miau miau estaba en el borde miau. Lo empujé y se cayó miau oops. Prrr.',
+      image: 'https://cataas.com/cat?width=200&height=200&_r=5'
+    },
+    {
+      id: 6,
+      title: 'Invasión de palomas en la ventana MIAU',
+      description: 'Miau miau miau kekekeke. Las veo miau. Quiero cazarlas miau pero hay cristal miau.',
+      image: 'https://cataas.com/cat?width=200&height=200&_r=6'
     }
   ];
 
