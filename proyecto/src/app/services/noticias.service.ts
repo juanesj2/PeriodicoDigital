@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { RespuestaNoticias } from '../interfaces/noticias';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../src/environments/environment';
 
 // Datos de prueba para fallback
 const DATOS_PRUEBA: RespuestaNoticias = {
