@@ -1,26 +1,42 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonHeader, IonToolbar, IonButtons, IonButton, IonTitle } from '@ionic/angular/standalone';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonModal, IonContent, IonList, IonItem } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline } from 'ionicons/icons';
+import { homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline, searchOutline, closeOutline, checkmarkCircleOutline } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, RouterLink],
+  imports: [CommonModule, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, RouterLink, IonModal, IonContent, IonList, IonItem],
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
   
   // Variable para controlar el estado del modo oscuro (Dark Mode)
   esModoOscuro = false;
+  
+  // Estado del modal de categorías
+  isModalOpen = false;
 
-  constructor() {
+  // Categorías de GNews
+  categorias: string[] = [
+    'general',
+    'world',
+    'nation',
+    'business',
+    'technology',
+    'entertainment',
+    'sports',
+    'science',
+    'health'
+  ];
+
+  constructor(private router: Router) {
     // Registramos los iconos que utilizaremos en la interfaz
-    addIcons({ homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline });
+    addIcons({ homeOutline, hardwareChipOutline, footballOutline, briefcaseOutline, videocamOutline, sunnyOutline, moonOutline, newspaperOutline, bookmarkOutline, searchOutline, closeOutline, checkmarkCircleOutline });
     
     // Detectamos la preferencia de color del sistema (claro u oscuro)
     const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)');
@@ -32,6 +48,16 @@ export class TabsPage {
       this.esModoOscuro = mediaQuery.matches;
       this.actualizarTema();
     });
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  seleccionarCategoria(categoria: string) {
+    this.isModalOpen = false;
+    // Navegar al buscador con la categoría seleccionada como parámetro
+    this.router.navigate(['/tabs/buscador'], { queryParams: { category: categoria } });
   }
 
   /**

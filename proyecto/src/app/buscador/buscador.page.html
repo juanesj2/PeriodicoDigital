@@ -1,0 +1,76 @@
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ selectedCategory | titlecase }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <!-- Si no hay noticias cargando, mostramos un botón para incitar a buscar -->
+  <div *ngIf="itemsNoticia.length === 0 && !loading" class="ion-text-center ion-padding" style="margin-top: 50px;" id="lupa">
+    <ion-icon name="search-outline" style="font-size: 64px; color: var(--ion-color-medium);"></ion-icon>
+    <p>Selecciona una categoría para empezar</p>
+    <ion-button (click)="setOpen(true)">Seleccionar Categoría</ion-button>
+  </div>
+
+
+  <!-- Lista de Noticias -->
+  <div class="news-list">
+    <app-news-card 
+      *ngFor="let item of itemsNoticia"
+      [noticia]="item">
+    </app-news-card>
+  </div>
+
+  <!-- Infinite Scroll con Hamster -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content>
+      <div class="wheel-and-hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
+            </div>
+            <div class="hamster__limb--fr"></div>
+            <div class="hamster__limb--fl"></div>
+            <div class="hamster__limb--br"></div>
+            <div class="hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
+        </div>
+        <div class="spoke"></div>
+      </div>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <!-- MODAL DE CATEGORÍAS -->
+  <ion-modal [isOpen]="isModalOpen" (didDismiss)="setOpen(false)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Categorías</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">
+              <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item button *ngFor="let cat of categorias" (click)="seleccionarCategoria(cat)" detail="false">
+            <ion-label>
+              <h2>{{ cat | titlecase }}</h2>
+            </ion-label>
+            <ion-icon *ngIf="selectedCategory === cat" slot="end" name="checkmark-circle-outline" color="primary"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

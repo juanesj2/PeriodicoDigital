@@ -27,6 +27,11 @@ export const routes: Routes = [
           import('../tab4/tab4.page').then((m) => m.Tab4Page),
       },
       {
+        path: 'buscador',
+        loadComponent: () =>
+          import('../buscador/buscador.page').then((m) => m.BuscadorPage),
+      },
+      {
         path: 'tabMIAU',
         loadComponent: () =>
           import('../tabMIAU/tabMIAU.page').then((m) => m.TabMIAUPage),

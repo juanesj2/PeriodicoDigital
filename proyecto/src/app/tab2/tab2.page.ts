@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,9 @@ import { Articulo } from '../interfaces/noticias';
     IonHeader,
     IonTitle,
     IonToolbar,
-    NewsCardComponent
+    NewsCardComponent,
+    IonInfiniteScroll,
+    IonInfiniteScrollContent
   ],
 })
 export class Tab2Page implements OnInit {
@@ -28,16 +30,33 @@ export class Tab2Page implements OnInit {
   // Categoría seleccionada por defecto
   selectedCategory: string = 'sports';
 
+  // Página actual de la paginación de noticias (empieza en 1)
+  page: number = 1;
+
   constructor(private noticiasService: NoticiasService) {}
 
   ngOnInit() {
     this.cargarNoticias();
   }
 
-  cargarNoticias() {
-    this.noticiasService.getTitularesPorCategoria(this.selectedCategory).subscribe(resp => {
-      // Map Articulo to ItemNoticia
-      this.itemsNoticia = resp.articles.map(articulo => ({
+  /**
+   * Carga las noticias de la categoría seleccionada.
+   * @param event (Opcional) El evento del infinite scroll para completar la carga o deshabilitarlo si no hay más datos.
+   */
+  cargarNoticias(event?: any) {
+    this.noticiasService.getTitularesPorCategoria(this.selectedCategory, this.page).subscribe(resp => {
+      
+      // Si la respuesta no trae artículos, significa que hemos llegado al final.
+      if (resp.articles.length === 0) {
+        // Deshabilitar el infinite scroll para que no siga pidiendo más páginas.
+        if (event) {
+          event.target.disabled = true;
+        }
+        return;
+      }
+
+      // Mapeamos los artículos recibidos de la API a la estructura que necesita nuestro componente (ItemNoticia)
+      const nuevosItems = resp.articles.map(articulo => ({
         id: articulo.id,
         title: articulo.title,
         description: articulo.description,
@@ -45,7 +64,25 @@ export class Tab2Page implements OnInit {
         source: articulo.source.name,
         url: articulo.url
       }));
+
+      // Añadimos los nuevos artículos al final del array existente (acumulamos las noticias)
+      this.itemsNoticia.push(...nuevosItems);
+
+      // Si la carga fue disparada por el infinite scroll, completamos el evento para ocultar el spinner
+      if (event) {
+        event.target.complete();
+      }
     });
+  }
+
+  /**
+   * Método que se ejecuta cuando el usuario llega al final de la lista (Infinite Scroll).
+   * Aumenta el número de página y carga el siguiente bloque de noticias.
+   * @param event Evento del infinite scroll
+   */
+  loadData(event: any) {
+    this.page++;
+    this.cargarNoticias(event);
   }
 
 }

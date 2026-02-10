@@ -103,7 +103,7 @@ export class NoticiasService {
 
   /**
    * Obtiene los titulares principales (general).
-   * Llama internamente a getTitularesPorCategoria con 'general'.
+   * Llama internamente a getTitularesPorCategoria con 'general' y la página 1 por defecto.
    */
   getTitulares(): Observable<RespuestaNoticias> {
     return this.getTitularesPorCategoria('general');
@@ -112,11 +112,13 @@ export class NoticiasService {
   // ==============================================================
 
   /**
-   * Obtiene titulares por categoría.
+   * Obtiene titulares por categoría con soporte de paginación.
    * Categorías disponibles: technology, sports, business, entertainment, etc.
+   * @param categoria La categoría de noticias a buscar.
+   * @param page Número de página para la paginación (por defecto 1).
    */
-  getTitularesPorCategoria(categoria: string): Observable<RespuestaNoticias> {
-    console.log(`Solicitando noticias de la categoría: ${categoria}`);
+  getTitularesPorCategoria(categoria: string, page: number = 1): Observable<RespuestaNoticias> {
+    console.log(`Solicitando noticias de la categoría: ${categoria}, página: ${page}`);
     
     // Si no hay API Key configurada, devolver datos de prueba (opcional)
     if (this.apiKey === 'YOUR_API_KEY_HERE') {
@@ -126,6 +128,6 @@ export class NoticiasService {
 
     // Petición HTTP a GNews
     // Se usa 'lang=es' para noticias en español.
-    return this.http.get<RespuestaNoticias>(`${this.apiUrl}/top-headlines?category=${categoria}&apikey=${this.apiKey}&lang=es`);
+    return this.http.get<RespuestaNoticias>(`${this.apiUrl}/top-headlines?category=${categoria}&apikey=${this.apiKey}&lang=es&page=${page}`);
   }
 }

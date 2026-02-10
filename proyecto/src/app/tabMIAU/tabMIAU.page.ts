@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonTabButton, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonTabButton, IonLabel, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,9 @@ import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutli
   imports: [
     CommonModule,
     IonContent,
-    NewsCardComponent
+    NewsCardComponent,
+    IonInfiniteScroll,
+    IonInfiniteScrollContent
   ],
 })
 export class TabMIAUPage {
@@ -59,4 +61,43 @@ export class TabMIAUPage {
   ];
 
   constructor() {}
+
+  /**
+   * Carga un número limitado de noticias adicionales de gatos.
+   * Simula la carga y luego desactiva el infinite scroll.
+   * @param event Evento del infinite scroll
+   */
+  loadData(event: any) {
+    // Simular retraso para ver al hámster
+    setTimeout(() => {
+      const nuevasNoticias: ItemNoticia[] = [
+        {
+          id: Date.now() + 1,
+          title: 'MIAU: Nuevo rascador destruido',
+          description: 'Miau miau he destrozado el rascador nuevo en 5 minutos miau. Karen llora miau.',
+          image: `https://cataas.com/cat?width=200&height=200&_r=${Math.random()}`
+        },
+        {
+          id: Date.now() + 2,
+          title: 'Caza nocturna de calcetines MIAU',
+          description: 'He cazado todos los calcetines y los he puesto bajo el sofá miau. Victoria miau.',
+          image: `https://cataas.com/cat?width=200&height=200&_r=${Math.random()}`
+        },
+        {
+          id: Date.now() + 3,
+          title: 'MIAU: ¿Por qué la puerta está cerrada?',
+          description: 'Miau miau ábreme la puerta. No quiero entrar, solo quiero que esté abierta miau.',
+          image: `https://cataas.com/cat?width=200&height=200&_r=${Math.random()}`
+        }
+      ];
+
+      this.itemsNoticia.push(...nuevasNoticias);
+      
+      // Completar la carga
+      event.target.complete();
+
+      // Desactivar el infinite scroll para que no cargue más (simulando fin de datos)
+      event.target.disabled = true;
+    }, 2000);
+  }
 }
