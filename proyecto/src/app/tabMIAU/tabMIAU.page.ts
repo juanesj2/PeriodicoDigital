@@ -24,39 +24,31 @@ export class TabMIAUPage {
   itemsNoticia: ItemNoticia[] = [
     {
       id: 1,
-      title: 'MIAU MIAU: La caja perfecta existe',
-      description: 'Miau miau he encontrado, miau, la caja de cartón definitiva. Prrr prrr es muy cómoda miau.',
+      title: 'Nuevo Chip de IA Revelado',
+      description: 'Un nuevo chip de IA sorprende al mundo con sus capacidades de automatización y visión...',
+      content: 'Niño ponme otra que esta tiene agujero',
       image: 'https://cataas.com/cat?width=200&height=200&_r=1'
     },
     {
       id: 2,
-      title: 'El punto rojo: ¿Amigo o Enemigo? MIAU',
-      description: 'Miau miau el punto rojo corre mucho miau. No puedo atraparlo miau miau. Karen se ríe miau.',
+      title: 'La IA llega a los gatos',
+      description: 'El mercado de juguetes inteligentes para gatos está en auge con nuevas innovaciones...',
+      content: 'Perdona tienes marlboro?',
       image: 'https://cataas.com/cat?width=200&height=200&_r=2'
     },
     {
       id: 3,
-      title: 'MIAU: Exigimos más atún ahora',
-      description: 'Miau miau miau la lata está vacía. Miau Karen, dame atún o te muerdo miau.',
+      title: 'Noticia Gatuna 3',
+      description: 'Más noticias sobre el mundo felino y sus avances tecnológicos...',
+      content: 'Con los dedos de las manos, los dedos de los pies...',
       image: 'https://cataas.com/cat?width=200&height=200&_r=3'
     },
     {
       id: 4,
-      title: 'Prrr Prrr: Siesta de 18 horas',
-      description: 'Miau zzz miau. Dormir al sol es lo mejor miau. No molestar miau.',
+      title: 'Gatos y Tecnología',
+      description: 'Cómo la tecnología está mejorando la vida de nuestras mascotas...',
+      content: 'Detenido Juan Steven en un club de carretera de Torrelodones ',
       image: 'https://cataas.com/cat?width=200&height=200&_r=4'
-    },
-    {
-      id: 5,
-      title: 'MIAU: He tirado el vaso de agua',
-      description: 'Miau miau estaba en el borde miau. Lo empujé y se cayó miau oops. Prrr.',
-      image: 'https://cataas.com/cat?width=200&height=200&_r=5'
-    },
-    {
-      id: 6,
-      title: 'Invasión de palomas en la ventana MIAU',
-      description: 'Miau miau miau kekekeke. Las veo miau. Quiero cazarlas miau pero hay cristal miau.',
-      image: 'https://cataas.com/cat?width=200&height=200&_r=6'
     }
   ];
 
@@ -75,18 +67,21 @@ export class TabMIAUPage {
           id: Date.now() + 1,
           title: 'MIAU: Nuevo rascador destruido',
           description: 'Miau miau he destrozado el rascador nuevo en 5 minutos miau. Karen llora miau.',
+          content:'El rascador nuevo no duró ni 5 minutos. Miau miau, es que estaba muy blandito. La humana (Karen) está llorando en la esquina, pero yo estoy feliz afilándome las uñas en los restos. Miau.',
           image: `https://cataas.com/cat?width=200&height=200&_r=${Math.random()}`
         },
         {
           id: Date.now() + 2,
           title: 'Caza nocturna de calcetines MIAU',
           description: 'He cazado todos los calcetines y los he puesto bajo el sofá miau. Victoria miau.',
+          content:'La misión de anoche fue un éxito rotundo. Todos los calcetines de la casa han sido capturados y asegurados bajo el sofá. La humana no podrá salir de casa hoy. Miau miau victoria.',
           image: `https://cataas.com/cat?width=200&height=200&_r=${Math.random()}`
         },
         {
           id: Date.now() + 3,
           title: 'MIAU: ¿Por qué la puerta está cerrada?',
           description: 'Miau miau ábreme la puerta. No quiero entrar, solo quiero que esté abierta miau.',
+          content:'Es una ofensa a mi majestad que una puerta esté cerrada. He estado cantando la canción de mi pueblo durante 3 horas para que la abran. Cuando la abrieron, decidí quedarme fuera. Miau.',
           image: `https://cataas.com/cat?width=200&height=200&_r=${Math.random()}`
         }
       ];

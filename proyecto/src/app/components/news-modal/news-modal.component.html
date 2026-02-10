@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Fuente: {{ noticia.source }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <img *ngIf="noticia.image" [src]="noticia.image" />
+  <h1 class="title" *ngIf="noticia.source">
+   {{ noticia.title }}
+  </h1>
+  <p>{{ cleanContent(noticia.content) }}</p>
+
+  <ion-button class="botonNoticias" *ngIf="noticia.url" expand="block" fill="outline" (click)="openExternal(noticia.url)">
+    Lee artículo completo
+  </ion-button>
+</ion-content>

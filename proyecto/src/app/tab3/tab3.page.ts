@@ -60,6 +60,7 @@ export class Tab3Page implements OnInit {
         id: articulo.id,
         title: articulo.title,
         description: articulo.description,
+        content: articulo.content,
         image: articulo.image,
         source: articulo.source.name,
         url: articulo.url
