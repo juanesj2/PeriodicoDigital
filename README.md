@@ -17,8 +17,6 @@ Una aplicación móvil multiplataforma diseñada para la lectura de noticias, ba
 
 ---
 
----
-
 ## 📱 Capturas de pantalla
 | Tab 1: Portada | Tab 2: Categorías | Tab 3: Modal para las noticias |
 |:---:|:---:|:---:|
