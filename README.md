@@ -31,6 +31,8 @@ El proyecto cuenta con una navegación basada en Tabs:
 * **Noticias:** Feed principal con las últimas noticias destacadas.
 * **Explorar:** Buscador o filtro por categorías (Deportes, Tecnología, Economía, etc.).
 * **⭐ Favoritos:** Lista de noticias guardadas localmente por el usuario.
+* **⭐ Widget tiempo:** Lista de noticias guardadas localmente por el usuario.
+* **⭐ Cambiar temas:** Lista de noticias guardadas localmente por el usuario.
 
 ---
 
