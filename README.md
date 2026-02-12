@@ -28,9 +28,9 @@ Una aplicación móvil multiplataforma diseñada para la lectura de noticias, ba
 
 El proyecto cuenta con una navegación basada en Tabs:
 
-* **📰 Tab 1 (Noticias):** Feed principal con las últimas noticias destacadas.
-* **🔍 Tab 2 (Explorar):** Buscador o filtro por categorías (Deportes, Tecnología, Economía, etc.).
-* **⭐ Tab 3 (Favoritos):** Lista de noticias guardadas localmente por el usuario.
+* **Noticias:** Feed principal con las últimas noticias destacadas.
+* **Explorar:** Buscador o filtro por categorías (Deportes, Tecnología, Economía, etc.).
+* **⭐ Favoritos:** Lista de noticias guardadas localmente por el usuario.
 
 ---
 
