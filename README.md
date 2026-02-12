@@ -17,8 +17,8 @@ Una aplicación móvil multiplataforma diseñada para la lectura de noticias, ba
 
 ---
 
-## 📱 Capturas de pantalla
-| Tab 1: Portada | Tab 2: Categorías | Tab 3: Modal para las noticias |
+## 🌞 Diferentes temas 🌝
+| Claro | Oscuro | Rojo | Verde | Azul | Morado |
 |:---:|:---:|:---:|
 | <img src="https://via.placeholder.com/200x400?text=Portada" width="200"> | <img src="https://via.placeholder.com/200x400?text=Categorias" width="200"> | <img src="https://via.placeholder.com/200x400?text=Favoritos" width="200"> |
 
