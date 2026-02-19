@@ -17,13 +17,22 @@ Una aplicación móvil multiplataforma diseñada para la lectura de noticias, ba
 
 ---
 
+## 🌞 Diferentes temas 🌝
+| Claro | Oscuro | Rojo | Verde | Azul | Morado |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| <img src="https://via.placeholder.com/200x400?text=Portada" width="200"> | <img src="https://via.placeholder.com/200x400?text=Categorias" width="200"> | <img src="https://via.placeholder.com/200x400?text=Favoritos" width="200"> |
+
+---
+
 ## 🚀 Funcionalidades Principales
 
 El proyecto cuenta con una navegación basada en Tabs:
 
-* **📰 Tab 1 (Noticias):** Feed principal con las últimas noticias destacadas.
-* **🔍 Tab 2 (Explorar):** Buscador o filtro por categorías (Deportes, Tecnología, Economía, etc.).
-* **⭐ Tab 3 (Favoritos):** Lista de noticias guardadas localmente por el usuario.
+* **Noticias:** Feed principal con las últimas noticias destacadas.
+* **Explorar:** Buscador o filtro por categorías (Deportes, Tecnología, Economía, etc.).
+* **⭐ Favoritos:** Lista de noticias guardadas localmente por el usuario.
+* **⭐ Widget tiempo:** Lista de noticias guardadas localmente por el usuario.
+* **⭐ Cambiar temas:** Lista de noticias guardadas localmente por el usuario.
 
 ---
 
