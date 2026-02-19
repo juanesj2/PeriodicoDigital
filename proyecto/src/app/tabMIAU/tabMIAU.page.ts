@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonTabButton, IonLabel, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { IonContent, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
 import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
 import { CommonModule } from '@angular/common';
-import { addIcons } from 'ionicons';
-import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tab-miau',
@@ -20,7 +17,11 @@ import { sunnyOutline, bookmarkOutline, newspaperOutline, moonOutline, homeOutli
   ],
 })
 export class TabMIAUPage {
-  // Lista de noticias de gatos para mostrar en la vista
+  // ==========================================
+  // ESTADO (STATE)
+  // ==========================================
+
+  // Lista de noticias de gatos hardcodeadas para mostrar en la vista "MIAU"
   itemsNoticia: ItemNoticia[] = [
     {
       id: 1,
@@ -52,7 +53,14 @@ export class TabMIAUPage {
     }
   ];
 
+  // ==========================================
+  // CONSTRUCTOR
+  // ==========================================
   constructor() {}
+
+  // ==========================================
+  // MÉTODOS PÚBLICOS
+  // ==========================================
 
   /**
    * Carga un número limitado de noticias adicionales de gatos.
@@ -60,8 +68,9 @@ export class TabMIAUPage {
    * @param event Evento del infinite scroll
    */
   loadData(event: any) {
-    // Simular retraso para ver al hámster
+    // Simular retraso de red de 2 segundos
     setTimeout(() => {
+      // Nuevas noticias generadas dinámicamente con imágenes aleatorias de cataas.com
       const nuevasNoticias: ItemNoticia[] = [
         {
           id: Date.now() + 1,
@@ -86,12 +95,13 @@ export class TabMIAUPage {
         }
       ];
 
+      // Añadir las nuevas noticias al array principal
       this.itemsNoticia.push(...nuevasNoticias);
       
-      // Completar la carga
+      // Completar la carga visual del infinite scroll
       event.target.complete();
 
-      // Desactivar el infinite scroll para que no cargue más (simulando fin de datos)
+      // Desactivar el infinite scroll para que no cargue más (simulando fin de datos disponibles)
       event.target.disabled = true;
     }, 2000);
   }

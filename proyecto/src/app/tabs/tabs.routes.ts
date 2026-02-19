@@ -37,6 +37,11 @@ export const routes: Routes = [
           import('../tabMIAU/tabMIAU.page').then((m) => m.TabMIAUPage),
       },
       {
+        path: 'ayuda',
+        loadComponent: () =>
+          import('../ayuda/ayuda.page').then((m) => m.AyudaPage),
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',

@@ -20,4 +20,13 @@
       {{ noticia.source }}
     </p>
   </div>
+
+  <!-- Botón de favoritos -->
+  <ion-button fill="clear" slot="end" (click)="toggleFavorite($event)">
+    <ion-icon 
+      slot="icon-only"
+      [name]="isFavorite() ? 'heart' : 'heart-outline'"
+      [color]="isFavorite() ? 'danger' : 'medium'">
+    </ion-icon>
+  </ion-button>
 </ion-item>

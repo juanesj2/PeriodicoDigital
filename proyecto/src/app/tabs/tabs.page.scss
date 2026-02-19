@@ -1,18 +1,25 @@
 :host {
+  display: block; /* Cambiado de flex a block para permitir que el menú maneje el layout */
+  height: 100%;
+}
+
+#main-content {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 ion-header {
   flex-shrink: 0;
-  position: relative; 
+  position: relative;
   z-index: 10;
 }
 
 ion-tabs {
   flex-grow: 1;
   position: relative;
+  /* Asegurar que el router outlet dentro de tabs funcione */
+  height: 100%;
 }
 
 ion-tab-bar {
@@ -20,7 +27,7 @@ ion-tab-bar {
   border-top: 1px solid var(--custom-border-color);
 }
 
-.cat{
+.cat {
   width: 24px;
   height: 24px;
   stroke: currentColor;

@@ -1,27 +1,17 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet,  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonThumbnail, } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet, IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonItem,
-    IonLabel,
-    IonList,
-    IonThumbnail,],
+  // Componentes standalone necesarios para la estructura base de la app
+  imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  constructor() {}
+  // ==========================================
+  // CONSTRUCTOR
+  // ==========================================
+  constructor() {
+    // Aquí se podrían inicializar servicios globales o comprobar estado de autenticación
+  }
 }

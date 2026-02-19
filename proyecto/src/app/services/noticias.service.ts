@@ -4,7 +4,12 @@ import { Observable, of } from 'rxjs';
 import { RespuestaNoticias } from '../interfaces/noticias';
 import { environment } from '../../../src/environments/environment';
 
-// Datos de prueba para fallback
+import { Preferences } from '@capacitor/preferences';
+
+// ==========================================
+// DATOS DE PRUEBA (FALLBACK)
+// ==========================================
+// Se usan si falla la API o no hay key configurada
 const DATOS_PRUEBA: RespuestaNoticias = {
     "totalArticles": 78230,
     "articles": [
@@ -80,11 +85,15 @@ const DATOS_PRUEBA: RespuestaNoticias = {
 })
 export class NoticiasService {
 
+  // ==========================================
+  // CONFIGURACIÓN DE LA API
+  // ==========================================
+
   // API Key de GNews (Obtenida desde el archivo de entorno)
   private apiKey = environment.apiKey; 
   private apiUrl = 'https://gnews.io/api/v4';
 
-  // Categorías disponibles
+  // Categorías que soporta la API y nuestra App
   public categorias: string[] = [
     'technology',
     'sports',
@@ -95,10 +104,61 @@ export class NoticiasService {
     'health'
   ];
 
-  constructor(private http: HttpClient) { }
+  // ==========================================
+  // ESTADO (STATE)
+  // ==========================================
+
+  // Array de IDs de noticias marcadas como favoritas
+  public favoritos: string[] = [];
+
+  constructor(private http: HttpClient) {
+    // Al iniciar el servicio, cargamos los favoritos guardados en el dispositivo
+    this.initFavoritos();
+  }
 
   // ==============================================================
-  // Métodos Principales del Servicio
+  // GESTIÓN DE FAVORITOS (PERSISTENCIA Y LÓGICA)
+  // ==============================================================
+
+  /**
+   * Carga los favoritos almacenados en Preferences (Capacitor)
+   */
+  async initFavoritos() {
+    const { value } = await Preferences.get({ key: 'favoritos' });
+    this.favoritos = value ? JSON.parse(value) : [];
+  }
+
+  /**
+   * Añade o elimina una noticia de favoritos y guarda el cambio
+   * @param noticiaId ID único de la noticia
+   */
+  async toggleFavorito(noticiaId: string) {
+    if (this.esFavorito(noticiaId)) {
+        // Eliminar de favoritos
+        this.favoritos = this.favoritos.filter(id => id !== noticiaId);
+    } else {
+        // Añadir a favoritos
+        this.favoritos.push(noticiaId);
+    }
+
+    // Guardar en persistencia (almacenamiento local del móvil)
+    await Preferences.set({
+        key: 'favoritos',
+        value: JSON.stringify(this.favoritos)
+    });
+  }
+
+  /**
+   * Comprueba si una noticia está en la lista de favoritos
+   * @param noticiaId ID de la noticia
+   * @returns true si es favorita, false si no
+   */
+  esFavorito(noticiaId: string): boolean {
+    return this.favoritos.includes(noticiaId);
+  }
+
+  // ==============================================================
+  // LLAMADAS A LA API (DATOS EXTERNOS)
   // ==============================================================
 
   /**
@@ -109,8 +169,6 @@ export class NoticiasService {
     return this.getTitularesPorCategoria('general');
   }
 
-  // ==============================================================
-
   /**
    * Obtiene titulares por categoría con soporte de paginación.
    * Categorías disponibles: technology, sports, business, entertainment, etc.
@@ -120,13 +178,13 @@ export class NoticiasService {
   getTitularesPorCategoria(categoria: string, page: number = 1): Observable<RespuestaNoticias> {
     console.log(`Solicitando noticias de la categoría: ${categoria}, página: ${page}`);
     
-    // Si no hay API Key configurada, devolver datos de prueba (opcional)
+    // Si no hay API Key configurada, devolver datos de prueba (opcional/desarrollo)
     if (this.apiKey === 'YOUR_API_KEY_HERE') {
         console.warn('API Key no configurada. Usando datos de prueba.');
         return of(DATOS_PRUEBA);
     }
 
-    // Petición HTTP a GNews
+    // Petición HTTP GET a GNews
     // Se usa 'lang=es' para noticias en español.
     return this.http.get<RespuestaNoticias>(`${this.apiUrl}/top-headlines?category=${categoria}&apikey=${this.apiKey}&lang=es&page=${page}`);
   }

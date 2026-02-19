@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NewsCardComponent, ItemNoticia } from '../components/news-card/news-card.component';
-import { NewsModalComponent } from '../components/news-modal/news-modal.component';
 import { CommonModule } from '@angular/common';
 import { NoticiasService } from '../services/noticias.service';
-import { Articulo } from '../interfaces/noticias';
 
 @Component({
   selector: 'app-tab1',
@@ -24,23 +21,38 @@ import { Articulo } from '../interfaces/noticias';
   ],
 })
 export class Tab1Page implements OnInit {
+  // ==========================================
+  // ESTADO (STATE)
+  // ==========================================
+
   // Array para almacenar las noticias que se mostrarán en la vista
   itemsNoticia: ItemNoticia[] = [];
   
-  // Categoría seleccionada por defecto
+  // Categoría seleccionada por defecto (Tecnología para Tab1)
   selectedCategory: string = 'technology';
   
   // Página actual de la paginación de noticias (empieza en 1)
   page: number = 1;
 
+  // ==========================================
+  // CONSTRUCTOR
+  // ==========================================
   constructor(private noticiasService: NoticiasService) {}
+
+  // ==========================================
+  // CICLO DE VIDA (LIFECYCLE)
+  // ==========================================
 
   ngOnInit() {
     this.cargarNoticias();
   }
 
+  // ==========================================
+  // MÉTODOS PÚBLICOS
+  // ==========================================
+
   /**
-   * Carga las noticias de la categoría seleccionada.
+   * Carga las noticias de la categoría seleccionada (Tecnología).
    * @param event (Opcional) El evento del infinite scroll para completar la carga o deshabilitarlo si no hay más datos.
    */
   cargarNoticias(event?: any) {
@@ -92,7 +104,7 @@ export class Tab1Page implements OnInit {
    */
   loadData(event: any) {
     this.page++;
-    this.cargarNoticias(event);
+    this.cargarNoticias(event); // Cargar siguiente página
   }
 
 }
