@@ -5,31 +5,75 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-list>
-      <!-- Opción Miau -->
-      <ion-menu-toggle auto-hide="false">
-        <ion-item button routerLink="/tabs/tabMIAU" lines="none" detail="false">
-            <span class="cat" slot="start" style="margin-right: 16px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color: var(--ion-text-color);">
-                  <path d="M19.0993 10.6602C20.2113 11.9744 19.98 13.5815 19.9801 15C19.9801 18.9062 14.7132 20 12 20C9.28677 20 4.01994 18.9062 4.01994 15C4.01995 13.5815 3.78875 11.9744 4.90066 10.6602M19.0993 10.6602C18.9048 10.4303 18.6692 10.2094 18.384 10M19.0993 10.6602C19.7993 11.0634 19.9781 9.55469 19.9801 9.0625V7.18761C19.9801 5.56261 18.8629 5.00011 17.9053 5.00011C16.9477 5.00011 15.0324 6.5625 14.394 6.5625C13.6279 6.5625 13.4804 6.40636 12 6.40636C10.5197 6.40636 10.3721 6.5625 9.60601 6.5625C8.9676 6.5625 7.05236 5 6.09476 5C5.13715 5 4.01995 5.5625 4.01995 7.1875V9.0625C4.02188 9.55469 4.20072 11.0634 4.90066 10.6602M4.90066 10.6602C5.09519 10.4303 5.33082 10.2094 5.61599 10" fill:none stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M12.8258 16C12.8258 16.1726 12.4647 16.3125 12.0193 16.3125C11.574 16.3125 11.2129 16.1726 11.2129 16C11.2129 15.8274 11.574 15.6875 12.0193 15.6875C12.4647 15.6875 12.8258 15.8274 12.8258 16Z" fill:none stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M15.5 13.5938C15.5 14.0252 15.2834 14.375 15.0161 14.375C14.7489 14.375 14.5323 14.0252 14.5323 13.5938C14.5323 13.1623 14.7489 12.8125 15.0161 12.8125C15.2834 12.8125 15.5 13.1623 15.5 13.5938Z" fill:none stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M9.5 13.5938C9.5 14.0252 9.28336 14.375 9.01613 14.375C8.74889 14.375 8.53226 14.0252 8.53226 13.5938C8.53226 13.1623 8.74889 12.8125 9.01613 12.8125C9.28336 12.8125 9.5 13.1623 9.5 13.5938Z" fill:none stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M22.0004 15.4688C21.5165 15.1562 19.4197 14.375 18.6133 14.375" fill:none stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M20.3871 17.9688C19.9033 17.6562 18.7742 16.875 17.9678 16.875" fill:none stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M2 15.4688C2.48387 15.1562 4.58065 14.375 5.3871 14.375" fill:none stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M3.61279 17.9688C4.09667 17.6562 5.2257 16.875 6.03215 16.875" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </span>
-          <ion-label>Miau News</ion-label>
-        </ion-item>
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label color="medium" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Contenido</ion-label>
+      </ion-list-header>
 
-        <!-- Opción Ayuda -->
-        <ion-item button lines="none" detail="false" routerLink="/tabs/ayuda">
-            <ion-icon slot="start" name="help-circle-outline"></ion-icon>
-            <ion-label>Ayuda</ion-label>
+      <ion-menu-toggle auto-hide="false">
+        <ion-item button routerLink="/tabs/tabMIAU" detail="false" class="menu-item-custom">
+          <div slot="start" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-inline-end: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color: var(--ion-color-primary);">
+              <path d="M19.0993 10.6602C20.2113 11.9744 19.98 13.5815 19.9801 15C19.9801 18.9062 14.7132 20 12 20C9.28677 20 4.01994 18.9062 4.01994 15C4.01995 13.5815 3.78875 11.9744 4.90066 10.6602M19.0993 10.6602C18.9048 10.4303 18.6692 10.2094 18.384 10M19.0993 10.6602C19.7993 11.0634 19.9781 9.55469 19.9801 9.0625V7.18761C19.9801 5.56261 18.8629 5.00011 17.9053 5.00011C16.9477 5.00011 15.0324 6.5625 14.394 6.5625C13.6279 6.5625 13.4804 6.40636 12 6.40636C10.5197 6.40636 10.3721 6.5625 9.60601 6.5625C8.9676 6.5625 7.05236 5 6.09476 5C5.13715 5 4.01995 5.5625 4.01995 7.1875V9.0625C4.02188 9.55469 4.20072 11.0634 4.90066 10.6602M4.90066 10.6602C5.09519 10.4303 5.33082 10.2094 5.61599 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M12.8258 16C12.8258 16.1726 12.4647 16.3125 12.0193 16.3125C11.574 16.3125 11.2129 16.1726 11.2129 16C11.2129 15.8274 11.574 15.6875 12.0193 15.6875C12.4647 15.6875 12.8258 15.8274 12.8258 16Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15.5 13.5938C15.5 14.0252 15.2834 14.375 15.0161 14.375C14.7489 14.375 14.5323 14.0252 14.5323 13.5938C14.5323 13.1623 14.7489 12.8125 15.0161 12.8125C15.2834 12.8125 15.5 13.1623 15.5 13.5938Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9.5 13.5938C9.5 14.0252 9.28336 14.375 9.01613 14.375C8.74889 14.375 8.53226 14.0252 8.53226 13.5938C8.53226 13.1623 8.74889 12.8125 9.01613 12.8125C9.28336 12.8125 9.5 13.1623 9.5 13.5938Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M22.0004 15.4688C21.5165 15.1562 19.4197 14.375 18.6133 14.375" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20.3871 17.9688C19.9033 17.6562 18.7742 16.875 17.9678 16.875" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M2 15.4688C2.48387 15.1562 4.58065 14.375 5.3871 14.375" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3.61279 17.9688C4.09667 17.6562 5.2257 16.875 6.03215 16.875" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <ion-label style="font-weight: 600;">Miau News</ion-label>
         </ion-item>
       </ion-menu-toggle>
+
+      <div style="height: 1px; background: var(--ion-color-step-100); margin: 8px 16px;"></div>
+
+      <ion-list-header>
+        <ion-label color="medium" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">TEMAS</ion-label>
+      </ion-list-header>
+
+      <ion-accordion-group>
+        <ion-accordion value="temas">
+          <ion-item slot="header">
+            <ion-icon slot="start" name="color-palette-outline" color="primary"></ion-icon>
+            <ion-label style="font-weight: 600;">Colores</ion-label>
+          </ion-item>
+
+          <div slot="content" style="background: var(--ion-color-step-50);">
+            <ion-item button (click)="cambiarColorTema('theme-blue')" detail="false">
+              <ion-icon slot="start" name="ellipse" style="color: #3880ff; font-size: 16px;"></ion-icon>
+              <ion-label>Azul</ion-label>
+            </ion-item>
+
+            <ion-item button (click)="cambiarColorTema('theme-red')" detail="false">
+              <ion-icon slot="start" name="ellipse" style="color: #ff4538; font-size: 16px;"></ion-icon>
+              <ion-label>Rojo</ion-label>
+            </ion-item>
+
+            <ion-item button (click)="cambiarColorTema('theme-green')" detail="false">
+              <ion-icon slot="start" name="ellipse" style="color: #35d105; font-size: 16px;"></ion-icon>
+              <ion-label>Verde</ion-label>
+            </ion-item>
+
+            <ion-item button (click)="cambiarColorTema('theme-purple')" detail="false">
+              <ion-icon slot="start" name="ellipse" style="color: #a51085; font-size: 16px;"></ion-icon>
+              <ion-label>Púrpura</ion-label>
+            </ion-item>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+
+      <div style="height: 1px; background: var(--ion-color-step-100); margin: 8px 16px;"></div>
+
+      <ion-menu-toggle auto-hide="false">
+        <ion-item button routerLink="/tabs/ayuda" detail="false">
+          <ion-icon slot="start" name="help-circle-outline" color="medium"></ion-icon>
+          <ion-label style="font-weight: 500;">Ayuda</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -45,7 +89,18 @@
       <ion-title class="ion-text-center">
         <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
           <div style="width: 35px; height: 35px; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
-            <img src="assets/icon.png" alt="Icono App" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.4);" />
+            <div slot="start" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-inline-end: 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color: var(--ion-color-primary);">
+              <path d="M19.0993 10.6602C20.2113 11.9744 19.98 13.5815 19.9801 15C19.9801 18.9062 14.7132 20 12 20C9.28677 20 4.01994 18.9062 4.01994 15C4.01995 13.5815 3.78875 11.9744 4.90066 10.6602M19.0993 10.6602C18.9048 10.4303 18.6692 10.2094 18.384 10M19.0993 10.6602C19.7993 11.0634 19.9781 9.55469 19.9801 9.0625V7.18761C19.9801 5.56261 18.8629 5.00011 17.9053 5.00011C16.9477 5.00011 15.0324 6.5625 14.394 6.5625C13.6279 6.5625 13.4804 6.40636 12 6.40636C10.5197 6.40636 10.3721 6.5625 9.60601 6.5625C8.9676 6.5625 7.05236 5 6.09476 5C5.13715 5 4.01995 5.5625 4.01995 7.1875V9.0625C4.02188 9.55469 4.20072 11.0634 4.90066 10.6602M4.90066 10.6602C5.09519 10.4303 5.33082 10.2094 5.61599 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M12.8258 16C12.8258 16.1726 12.4647 16.3125 12.0193 16.3125C11.574 16.3125 11.2129 16.1726 11.2129 16C11.2129 15.8274 11.574 15.6875 12.0193 15.6875C12.4647 15.6875 12.8258 15.8274 12.8258 16Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15.5 13.5938C15.5 14.0252 15.2834 14.375 15.0161 14.375C14.7489 14.375 14.5323 14.0252 14.5323 13.5938C14.5323 13.1623 14.7489 12.8125 15.0161 12.8125C15.2834 12.8125 15.5 13.1623 15.5 13.5938Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9.5 13.5938C9.5 14.0252 9.28336 14.375 9.01613 14.375C8.74889 14.375 8.53226 14.0252 8.53226 13.5938C8.53226 13.1623 8.74889 12.8125 9.01613 12.8125C9.28336 12.8125 9.5 13.1623 9.5 13.5938Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M22.0004 15.4688C21.5165 15.1562 19.4197 14.375 18.6133 14.375" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20.3871 17.9688C19.9033 17.6562 18.7742 16.875 17.9678 16.875" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M2 15.4688C2.48387 15.1562 4.58065 14.375 5.3871 14.375" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3.61279 17.9688C4.09667 17.6562 5.2257 16.875 6.03215 16.875" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           </div>
           <span style="font-weight: 700; font-size: 20px;">Noticias Felinas</span>
         </div>
