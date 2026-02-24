@@ -26,6 +26,11 @@
     </ion-title>
 
     <ion-buttons slot="end">
+
+      <ion-button (click)="abrirClima()">
+        <ion-icon slot="icon-only" name="rainy-outline"></ion-icon>
+      </ion-button>
+
       <ion-button (click)="alternarTema()">
         <ion-icon slot="icon-only" [name]="esModoOscuro ? 'sunny-outline' : 'moon-outline'"></ion-icon>
       </ion-button>
