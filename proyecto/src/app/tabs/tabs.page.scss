@@ -37,3 +37,157 @@ ion-tab-bar {
 ion-toolbar {
   color: var(--ion-color-primary);
 }
+
+/* Floating Weather Widget Styles */
+.floating-weather-wrapper {
+  position: absolute;
+  top: 56px; /* Right below the header */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 56px); /* Cover the rest of the screen to allow closing on background click */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000; /* High z-index to overlay content */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+
+.flexbox-widget {
+  width: 90%;
+  max-width: 350px;
+  background: var(--ion-background-color, #ffffff);
+  border-radius: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Animación particular para que parezca que los items salen de la top bar */
+@keyframes slideDownDetails {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.widget-top {
+  background: var(--ion-color-light, #d4d5d8);
+  color: var(--ion-color-dark, #222428);
+  padding: 1.5rem;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2; /* Importante para que las de abajo realmente salgan desde "debajo" */
+}
+
+::ng-deep body.dark .widget-top {
+  background: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+::ng-deep body.dark .widget-top .temp-val,
+::ng-deep body.dark .widget-top .location {
+  color: #ffffff !important;
+}
+
+.icon-col {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 60px;
+  line-height: 1;
+}
+
+.temp-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1;
+}
+
+.temp-val {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #000000;
+}
+
+.location {
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.85;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.widget-middle {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: slideDownDetails 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  gap: 8px;
+  flex: 1;
+}
+
+.metric-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.metric-label {
+  opacity: 0.7;
+  color: var(--ion-text-color, #000);
+}
+
+.metric-val {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--ion-text-color, #000);
+}
+
+.widget-bottom {
+  background: var(--ion-color-primary, limegreen);
+  color: var(--ion-color-primary-contrast, white);
+  text-align: center;
+  padding: 0.8rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  text-transform: capitalize;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: slideDownDetails 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  animation-delay: 0.2s;
+}

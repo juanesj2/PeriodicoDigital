@@ -32,7 +32,6 @@ import { RouterLink, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular/standalone';
 import { Geolocation } from '@capacitor/geolocation';
-import { ClimaModalComponent } from '../modalClima/modalClima.component';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -112,6 +111,9 @@ export class TabsPage {
     this.cambiarColorTema(temaColorGuardado);
   }
 
+  mostrarClima: boolean = false;
+  climaGuardado: any = null;
+
   //Abre el modal del clima. Se llama cuando se pulsa el botón del clima
   async abrirClima() {
     try {
@@ -135,8 +137,8 @@ export class TabsPage {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
-      //Llamamos a la API del clima
-      const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+      //Llamamos a la API del clima añadiendo timezone=auto para que la hora local coincida
+      const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
       const respuestaClima: any = await firstValueFrom(this.http.get(urlClima));
 
       //Llamamos a una API de geocodificación inversa gratuita para obtener la ciudad
@@ -152,29 +154,58 @@ export class TabsPage {
       }
 
       //Estos son los datos que aparecerán en el modal
-      const clima = {
+      const code = respuestaClima.current_weather.weathercode;
+      const isDay = respuestaClima.current_weather.is_day === 1;
+      let descripcion = 'Desconocido';
+      let icono = 'thermometer-outline';
+
+      // Interpretación de códigos WMO
+      if (code === 0) {
+        descripcion = 'Despejado';
+        icono = isDay ? '☀️' : '🌕';
+      } else if (code === 1 || code === 2 || code === 3) {
+        descripcion = 'Parcialmente Nublado';
+        icono = isDay ? '⛅' : '☁️';
+      } else if (code >= 45 && code <= 48) {
+        descripcion = 'Niebla';
+        icono = '🌫️';
+      } else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
+        descripcion = 'Lluvia';
+        icono = '🌧️';
+      } else if (code >= 71 && code <= 77) {
+        descripcion = 'Nieve';
+        icono = '❄️';
+      } else if (code >= 95 && code <= 99) {
+        descripcion = 'Tormenta';
+        icono = '⛈️';
+      }
+
+      const ahora = new Date();
+      const horaFormateada = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      this.climaGuardado = {
         location: nombreCiudad,
         temperature: respuestaClima.current_weather.temperature,
         windspeed: respuestaClima.current_weather.windspeed,
         winddirection: respuestaClima.current_weather.winddirection,
         is_day: respuestaClima.current_weather.is_day,
         weathercode: respuestaClima.current_weather.weathercode,
-        timezone: respuestaClima.timezone
+        timezone: respuestaClima.timezone,
+        time: horaFormateada,
+        descripcion: descripcion,
+        icono: icono
       };
 
-      //Abrimos el modal
-      const modal = await this.modalCtrl.create({
-        component: ClimaModalComponent,
-        componentProps: { clima }
-      });
+      this.mostrarClima = true;
 
-      await modal.present();
-
-      //Controlamos la excepción para que no dé error
     } catch (error) {
       console.error('Error obteniendo clima:', error);
       alert('No se pudo obtener el clima. Activa la ubicación.');
     }
+  }
+
+  cerrarClima() {
+    this.mostrarClima = false;
   }
   // ==========================================
   // MÉTODOS PÚBLICOS (ACCIONES DE LA UI)
