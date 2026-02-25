@@ -110,6 +110,10 @@
         <ion-button (click)="alternarTema()">
           <ion-icon slot="icon-only" [name]="esModoOscuro ? 'sunny-outline' : 'moon-outline'"></ion-icon>
         </ion-button>
+        <!-- Boton para abrir la predicción del clima -->
+        <ion-button (click)="abrirClima()">
+          <ion-icon slot="icon-only" name="partly-sunny-outline"></ion-icon>
+        </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
